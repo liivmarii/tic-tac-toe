@@ -16,6 +16,7 @@ const board = document.getElementById('board')
 const winningMessageElement = document.getElementById('winning-message')
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]')
 const restartButton = document.getElementById('restart-button')
+const resetButton = document.getElementById('reset-button')
 
 let currentClass
 
@@ -24,11 +25,19 @@ const xScoreText = document.getElementById('x-score')
 
 let oScore = 0
 let xScore = 0
+oScoreText.innerText = oScore
+xScoreText.innerText = xScore
+do {
+    oScoreText.innerText = oScore
+    xScoreText.innerText = xScore
+} while (oScore != 0 || xScore != 0)
+
 let oTurn
 
 startGame()
 
 restartButton.addEventListener('click', startGame)
+resetButton.addEventListener('click', resetScore)
 
 function startGame() {
     oTurn = false
@@ -51,14 +60,8 @@ function endGame(draw) {
     } else {
         winningMessageTextElement.innerText = `${oTurn ? "o's" : "x's"} win!`
 
-        if (currentClass === O_CLASS) {
-            oScore++
-            oScoreText.innerText = oScore
-        }
-        else {
-            xScore++
-            xScoreText.innerText = xScore
-        }
+        if (currentClass === O_CLASS) oScore++
+        else xScore++
     }
 
     winningMessageElement.classList.add('show')
@@ -108,4 +111,13 @@ function isDraw() {
     return [...cellElements].every(cell => {
         return cell.classList.contains(X_CLASS) || cell.classList.contains(O_CLASS)
     })
+}
+
+// TODO: resetScore isn't working :(
+function resetScore() {
+    oScore = 0
+    xScore = 0
+
+    oScoreText.innerText = oScore
+    xScoreText.innerText = xScore
 }
