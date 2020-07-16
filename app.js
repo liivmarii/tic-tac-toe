@@ -17,6 +17,13 @@ const winningMessageElement = document.getElementById('winning-message')
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]')
 const restartButton = document.getElementById('restart-button')
 
+let currentClass
+
+const oScoreText = document.getElementById('o-score')
+const xScoreText = document.getElementById('x-score')
+
+let oScore = 0
+let xScore = 0
 let oTurn
 
 startGame()
@@ -33,6 +40,9 @@ function startGame() {
     })
     setBoardHoverClass()
     winningMessageElement.classList.remove('show')
+
+    console.log('o score: ' + oScore)
+    console.log('x score: ' + xScore)
 }
 
 function endGame(draw) {
@@ -40,6 +50,15 @@ function endGame(draw) {
         winningMessageTextElement.innerText = 'draw!'
     } else {
         winningMessageTextElement.innerText = `${oTurn ? "o's" : "x's"} win!`
+
+        if (currentClass === O_CLASS) {
+            oScore++
+            oScoreText.innerText = oScore
+        }
+        else {
+            xScore++
+            xScoreText.innerText = xScore
+        }
     }
 
     winningMessageElement.classList.add('show')
@@ -47,15 +66,13 @@ function endGame(draw) {
 
 function handleClick(e) {
     const cell = e.target
-    const currentClass = oTurn ? O_CLASS : X_CLASS
+    currentClass = oTurn ? O_CLASS : X_CLASS
 
     placeMark(cell, currentClass)
 
-    if (checkWin(currentClass)) {
-        endGame(false)
-    } else if (isDraw()) {
-        endGame(true)
-    } else {
+    if (checkWin(currentClass)) endGame(false)
+    else if (isDraw()) endGame(true)
+    else {
         swapTurns()
         setBoardHoverClass()
     }
