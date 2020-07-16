@@ -11,16 +11,34 @@
     <script src="app.js" defer></script>
 </head>
 <body>
-    <div class="board" id="board">
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
+    <div class="container">
+        <div class="board" id="board">
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+        </div>
+        <div class="score" id="score">
+            <h1>Score board</h1>
+            <table>
+                <tr>
+                    <td>
+                        x: <span id="x-score">0</span>
+                    </td>
+                    <td>
+                        o: <span id="o-score">0</span>
+                    </td>
+                </tr>
+            </table>
+            <button id="reset-button">
+                reset scroe
+            </button>
+        </div>
     </div>
     <div class="winning-message" id="winning-message">
         <div data-winning-message-text>

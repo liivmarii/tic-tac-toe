@@ -13,12 +13,20 @@ html {
 
 body {
   font: 400 1.6rem/1.5 Poppins, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #eef5db;
   background: #333745;
 }
 
-.board {
+.container {
   height: 100vh;
   width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.board {
   display: grid;
   justify-content: center;
   justify-items: center;
@@ -96,6 +104,30 @@ body {
   background: #eef5db;
 }
 
+.score {
+  width: 300px;
+  margin-top: 5rem;
+  text-align: center;
+}
+.score h1, .score table {
+  font-weight: 100;
+}
+.score table {
+  margin: 0 auto;
+  width: 40%;
+  font-size: 2rem;
+}
+.score span {
+  font-weight: 700;
+}
+.score button {
+  color: #e63462;
+  background: none;
+}
+.score button:hover {
+  color: #eef5db;
+}
+
 .winning-message {
   position: fixed;
   top: 0;
@@ -108,7 +140,6 @@ body {
   flex-direction: column;
   font-size: 4rem;
   text-align: center;
-  color: #eef5db;
   background: rgba(51, 55, 69, 0.8);
 }
 .winning-message button {
